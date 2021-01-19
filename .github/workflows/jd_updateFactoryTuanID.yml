@@ -13,8 +13,6 @@ on:
     types: jd_updateFactoryTuanID
 jobs:
   build:
-    env:
-      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }} # 我自己同步到gitee使用，其他人可忽略
     runs-on: ubuntu-latest
 
     if: github.event.repository.owner.id == github.event.sender.id
@@ -43,9 +41,9 @@ jobs:
         
       - name: commit
         run: |
-          git config --global user.name lxk0301
+          git config --global user.name 952714408
           git add .
-          git commit -m "update by lxk0301 Github Action" -a || echo "Nothing to update"
+          git commit -m "update by 952714408 Github Action" -a || echo "Nothing to update"
       
       - name: Push changes
         uses: ad-m/github-push-action@master
