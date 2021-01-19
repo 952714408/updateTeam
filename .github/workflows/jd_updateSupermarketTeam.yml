@@ -34,7 +34,7 @@ jobs:
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
       - name: commit
         run: |
-          git config --global user.name lxk0301
+          git config --global user.name 952714408
           git add .
           git commit -m "update by 952714408 Github Action" -a || echo "Nothing to update"
       
