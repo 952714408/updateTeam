@@ -40,7 +40,7 @@ jobs:
         
       - name: commit
         run: |
-          git config --global user.name lxk0301
+          git config --global user.name 952714408
           git add .
           git commit -m "update by 952714408 Github Action" -a || echo "Nothing to update"
       
@@ -50,4 +50,4 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
           branch: master
       - name: Purge CDN Cache
-        run: curl https://purge.jsdelivr.net/gh/LXK9301/updateTeam@master/jd_updateSmallHomeInviteCode.json
+        run: curl https://purge.jsdelivr.net/gh/952714408/updateTeam@master/jd_updateSmallHomeInviteCode.json
