@@ -44,5 +44,5 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
           branch: master
       - name: Purge CDN Cache
-        run: curl https://purge.jsdelivr.net/gh/LXK9301/updateTeam@master/jd_updateTeam.json
+        run: curl https://purge.jsdelivr.net/gh/952714408/updateTeam@master/jd_updateTeam.json
     
