@@ -125,7 +125,7 @@ async function getTeamId() {
 //创建PK战队API
 function smtg_createPkTeam() {
   return new Promise((resolve) => {
-    $.get(taskUrl('smtg_createPkTeam', { "teamName": `lxk030${$.index}`,  "channel": "1" }), (err, resp, data) => {
+    $.get(taskUrl('smtg_createPkTeam', { "teamName": `黑夜守望者${$.index}`,  "channel": "1" }), (err, resp, data) => {
       try {
         if (err) {
           console.log('\n京小超: API查询请求失败 ‼️‼️')
