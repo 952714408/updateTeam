@@ -95,14 +95,14 @@ function getUserTuanInfo(channel="FISSION_BEAN") {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            if (!data.canStartNewAssist)
+            if (!data.data.canStartNewAssist)
               $.tuan = {
-                "activityIdEncrypted": data.id,
-                "assistStartRecordId": data.assistStartRecordId,
-                "assistedPinEncrypted": data.encPin,
+                "activityIdEncrypted": data.data.id,
+                "assistStartRecordId": data.data.assistStartRecordId,
+                "assistedPinEncrypted": data.data.encPin,
                 "channel": channel
               }
-            $.tuanActId = data.id
+            $.tuanActId = data.data.id
           }
         }
       } catch (e) {
@@ -152,7 +152,7 @@ function shareCodesFormat() {
       const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
       $.newShareCodes = inviteCodes[tempIndex].split('@');
     }
-    const readShareCodeRes = null //await readShareCode();
+    const readShareCodeRes = await readShareCode();
     if (readShareCodeRes && readShareCodeRes.code === 200) {
       $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
     }
