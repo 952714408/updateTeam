@@ -97,12 +97,12 @@ function getUserTuanInfo(channel="FISSION_BEAN") {
             data = JSON.parse(data);
             if (!data.data.canStartNewAssist)
               $.tuan = {
-                "activityIdEncrypted": data.data.id,
-                "assistStartRecordId": data.data.assistStartRecordId,
-                "assistedPinEncrypted": data.data.encPin,
+                "activityIdEncrypted": data.id,
+                "assistStartRecordId": data.assistStartRecordId,
+                "assistedPinEncrypted": data.encPin,
                 "channel": channel
               }
-            $.tuanActId = data.data.id
+            $.tuanActId = data.id
           }
         }
       } catch (e) {
