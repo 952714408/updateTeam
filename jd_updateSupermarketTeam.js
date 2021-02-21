@@ -39,7 +39,7 @@ function showMsg() {
     try {
       console.log(`等待五秒后刷新CDN缓存`);
       await $.wait(5000);
-      await $.http.get({url: `https://purge.jsdelivr.net/gh/952714408/updateTeam@master/jd_updateTeam.json`}).then((resp) => {
+      await $.http.get({url: `https://purge.jsdelivr.net/gh/lxk0301/updateTeam@master/jd_updateTeam.json`}).then((resp) => {
         if (resp.statusCode === 200) {
           console.log(`已刷新CDN缓存`)
         } else {
@@ -64,7 +64,7 @@ async function writeFile() {
     } else if (joinStatus === 1) {
       console.log(`${decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])}  已加入战队 [${currentUserPkInfo.teamName}]/[${teamId}]`);
 
-      let jd_superMarketTeam = await fs.readFileSync('./jd_updateTeam.json');
+      let jd_superMarketTeam = await fs.readFileSync('./shareCodes/jd_updateTeam.json');
       jd_superMarketTeam = JSON.parse(jd_superMarketTeam);
       if (jd_superMarketTeam.pkActivityId === pkActivityId) {
         console.log(`pkActivityId【${pkActivityId}】暂无变化, 暂不替换json文件`);
@@ -79,7 +79,9 @@ async function writeFile() {
           pkActivityId,
           "Teams": $.teamIdArr || [].push({teamId, inviteCode}),
         }
-        await fs.writeFileSync('jd_updateTeam.json', JSON.stringify(info));
+        if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
+        await fs.writeFileSync(`./shareCodes/jd_updateTeam.json`, JSON.stringify(info));
+        // await fs.writeFileSync('jd_updateTeam.json', JSON.stringify(info));
         console.log(`文件写入成功，新的teamId:[${teamId}]和pkActivityId:[${info.pkActivityId}]已经替换`);
       }
     }
@@ -125,7 +127,7 @@ async function getTeamId() {
 //创建PK战队API
 function smtg_createPkTeam() {
   return new Promise((resolve) => {
-    $.get(taskUrl('smtg_createPkTeam', { "teamName": `黑夜守望者${$.index}`,  "channel": "1" }), (err, resp, data) => {
+    $.get(taskUrl('smtg_createPkTeam', { "teamName": `lxk030${$.index}`,  "channel": "1" }), (err, resp, data) => {
       try {
         if (err) {
           console.log('\n京小超: API查询请求失败 ‼️‼️')
